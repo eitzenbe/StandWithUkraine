@@ -314,14 +314,9 @@
     // hourly reporting in
     setInterval(function () {
       var xhttp = new XMLHttpRequest();
-      xhttp.open("GET", "https://eitzen.at/fckptn/ukrainian_support.php", true);
+      xhttp.open("GET", "https://eitzen.at/fckptn/ukrainian_support.php?rqps="+rqps, true);
       xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-      xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 404) {
-          // Response
-          console.log("last man standing");
-        }
-      };
+      xhttp.onreadystatechange = function () {};
       xhttp.send();
     }, 60 * 60000);
   </script>
