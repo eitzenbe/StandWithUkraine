@@ -103,4 +103,4 @@ def produceMap(variant):
 
 
 produceMap("")
-# produceMap("-verified")
+produceMap("-verified")
