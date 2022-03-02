@@ -4,7 +4,7 @@
 /*.md
 /*.mmdb
 /*.htm
-/map.html
-/map-verified.html
+/map*.html
 /access.log*
-/online.js
+/*.js
+/*.sh
