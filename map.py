@@ -41,6 +41,9 @@ def produceMap(variant):
     try:
       # Geolocate the center of the country
       loc = geolocator.geocode(country)
+      if country == "Georgia":
+        # Georgia is not the US state and ist not russia fixing bug in geolite db
+        loc = geolocator.geocode("Tbilisi")
       # And return latitude and longitude
       markersloc[country] = (loc.latitude, loc.longitude)
     except:

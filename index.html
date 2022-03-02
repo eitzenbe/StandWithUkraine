@@ -88,7 +88,7 @@
         image.onload = function () {
           increment("succeeded", index);
         }
-        image.src = target + "?" + generateId() + "=" + Math.floor(Math.random() * 1000);
+        image.src = target + "/" + generateId() + "?" + generateId() + "=" + Math.floor(Math.random() * 1000);
         increment("requests", index);
       };
       document.getElementsByClassName("target")[index].value = target;
